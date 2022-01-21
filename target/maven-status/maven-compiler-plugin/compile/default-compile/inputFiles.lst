@@ -1,0 +1,13 @@
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/App.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Attributes.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/package-info.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/ExprTerm.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Expression.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Attribute.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/NumberLit.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/LiteralValue.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Tupple.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Boolean.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Body.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/Null.java
+/home/katarina/simpleHCL/src/main/java/sk/tuke/yajco/simpleHCL/model/CollectionValue.java
