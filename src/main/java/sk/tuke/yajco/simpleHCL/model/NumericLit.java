@@ -2,7 +2,7 @@ package sk.tuke.yajco.simpleHCL.model;
 
 import yajco.annotation.Token;
 
-public class NumberLit extends LiteralValue{
+public class NumericLit extends LiteralValue{
     private Integer value;
 
     public Integer getValue() {
@@ -13,7 +13,7 @@ public class NumberLit extends LiteralValue{
         this.value = value;
     }
 
-    public NumberLit(@Token("number") Integer value) {
+    public NumericLit(@Token("number") Integer value) {
         this.value = value;
     }
 }

@@ -8,7 +8,7 @@
 %import "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolUnorderedParam";
 %import "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper";
 
-%terminals number, SYMBOL_44, SYMBOL_93, bool, null_value, SYMBOL_61, name, SYMBOL_91;
+%terminals number, SYMBOL_44, SYMBOL_123, SYMBOL_125, SYMBOL_93, bool, null_value, SYMBOL_61, name, SYMBOL_91;
 
 %typeof number = "java.lang.String";
 %typeof bool = "java.lang.String";
@@ -18,7 +18,6 @@
 %typeof LiteralValue = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue>";
 %typeof LiteralValueArray2 = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.LiteralValue>>";
 %typeof Attributes = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Attributes>";
-%typeof NumberLit = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumberLit>";
 %typeof Boolean = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean>";
 %typeof AttributeArray1 = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.Attribute>>";
 %typeof Expression = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression>";
@@ -27,6 +26,7 @@
 %typeof Null = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Null>";
 %typeof Body = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Body>";
 %typeof ExprTerm = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.ExprTerm>";
+%typeof NumericLit = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit>";
 
 %goal Body;
 
@@ -39,17 +39,22 @@ ExprTerm
 	| CollectionValue.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	;
 
+NumericLit
+	= number.value	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.NumericLit(java.lang.Integer.valueOf(value)), (Object)java.lang.Integer.valueOf(value))); :}
+	;
+
 Expression
 	= ExprTerm.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	;
 
 AttributeArray1
-	= AttributeArray1.list Attribute.elem	{: list.getWrappedObject().add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list.getWrappedObject()); :}
+	= AttributeArray1.list SYMBOL_44 Attribute.elem	{: list.getWrappedObject().add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list.getWrappedObject()); :}
 	| 	{: return (Symbol) new SymbolWrapper(new SymbolListImpl<sk.tuke.yajco.simpleHCL.model.Attribute>()); :}
+	| Attribute.elem	{: java.util.List<sk.tuke.yajco.simpleHCL.model.Attribute> list = null; list = new SymbolListImpl<sk.tuke.yajco.simpleHCL.model.Attribute>(); list.add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list); :}
 	;
 
 Attributes
-	= AttributeArray1.attributes	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Attributes(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Attribute>(attributes.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Attribute>(attributes.getWrappedObject()))); :}
+	= SYMBOL_123 AttributeArray1.attributes SYMBOL_125	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Attributes(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Attribute>(attributes.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Attribute>(attributes.getWrappedObject()))); :}
 	;
 
 LiteralValueArray2
@@ -66,10 +71,6 @@ Body
 	= Attributes.attributes	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Body(attributes.getWrappedObject()), (Object)attributes.getWrappedObject())); :}
 	;
 
-NumberLit
-	= number.value	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.NumberLit(java.lang.Integer.valueOf(value)), (Object)java.lang.Integer.valueOf(value))); :}
-	;
-
 Attribute
 	= name.name SYMBOL_61 Expression.expression	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Attribute(name, expression.getWrappedObject()), (Object)name, expression.getWrappedObject())); :}
 	;
@@ -83,7 +84,7 @@ CollectionValue
 	;
 
 LiteralValue
-	= NumberLit.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
+	= NumericLit.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	| Null.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	| Boolean.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	;

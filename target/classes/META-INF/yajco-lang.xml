@@ -69,10 +69,20 @@
               <concreteSyntax>
                 <yajco.model.Notation>
                   <parts>
+                    <yajco.model.TokenPart>
+                      <token>{</token>
+                    </yajco.model.TokenPart>
                     <yajco.model.PropertyReferencePart>
                       <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
-                      <patterns/>
+                      <patterns>
+                        <yajco.model.pattern.impl.Separator>
+                          <value>,</value>
+                        </yajco.model.pattern.impl.Separator>
+                      </patterns>
                     </yajco.model.PropertyReferencePart>
+                    <yajco.model.TokenPart>
+                      <token>}</token>
+                    </yajco.model.TokenPart>
                   </parts>
                   <patterns/>
                 </yajco.model.Notation>
@@ -114,7 +124,7 @@
       <patterns/>
     </yajco.model.Concept>
     <yajco.model.Concept>
-      <name>NumberLit</name>
+      <name>NumericLit</name>
       <parent reference="../../yajco.model.Concept[6]"/>
       <abstractSyntax>
         <yajco.model.Property>

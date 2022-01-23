@@ -22,6 +22,8 @@ public class LALRBodyParserScanner extends Scanner {
 
     static {
         tokens.put((int) Terminals.SYMBOL_44, Pattern.compile("[,]"));
+        tokens.put((int) Terminals.SYMBOL_123, Pattern.compile("[{]"));
+        tokens.put((int) Terminals.SYMBOL_125, Pattern.compile("[}]"));
         tokens.put((int) Terminals.SYMBOL_93, Pattern.compile("[]]"));
         tokens.put((int) Terminals.SYMBOL_61, Pattern.compile("[=]"));
         tokens.put((int) Terminals.SYMBOL_91, Pattern.compile("\\["));
