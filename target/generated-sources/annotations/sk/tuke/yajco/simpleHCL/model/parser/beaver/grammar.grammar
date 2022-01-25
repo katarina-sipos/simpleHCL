@@ -22,7 +22,7 @@
 %typeof AttributeArray1 = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.Attribute>>";
 %typeof Expression = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression>";
 %typeof CollectionValue = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue>";
-%typeof Tupple = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Tupple>";
+%typeof Tupple = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Tuple>";
 %typeof Null = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Null>";
 %typeof Body = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Body>";
 %typeof ExprTerm = "sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.ExprTerm>";
@@ -64,7 +64,7 @@ LiteralValueArray2
 	;
 
 Tupple
-	= SYMBOL_91 LiteralValueArray2.items SYMBOL_93	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Tupple(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.LiteralValue>(items.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.LiteralValue>(items.getWrappedObject()))); :}
+	= SYMBOL_91 LiteralValueArray2.items SYMBOL_93	{: return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Tuple(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.LiteralValue>(items.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.LiteralValue>(items.getWrappedObject()))); :}
 	;
 
 Body

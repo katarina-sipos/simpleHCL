@@ -7,11 +7,11 @@ import yajco.annotation.Separator;
 import java.util.List;
 
 
-public class Tupple extends CollectionValue {
+public class Tuple extends CollectionValue {
 
     private List<LiteralValue> items;
 
-    public Tupple(@Before("[") @After("]") @Separator(",") List<LiteralValue> items) {
+    public Tuple(@Before("[") @After("]") @Separator(",") List<LiteralValue> items) {
         this.items = items;
     }
 
