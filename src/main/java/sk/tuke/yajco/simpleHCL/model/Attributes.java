@@ -13,7 +13,7 @@ public class Attributes extends ArrayList<Attribute> {
         return new Attributes(Collections.singletonList(attribute));
     }
 
-    public Attributes(@Separator(",") @Before("{") @After("}") List<Attribute> attributes) {
+    public Attributes(List<Attribute> attributes) {
         addAll(attributes);
     }
 

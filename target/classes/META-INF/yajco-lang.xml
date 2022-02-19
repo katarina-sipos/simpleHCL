@@ -36,10 +36,41 @@
                             </type>
                             <patterns/>
                           </yajco.model.Property>
+                          <yajco.model.Property>
+                            <name>privateAt</name>
+                            <type class="yajco.model.type.PrimitiveType">
+                              <primitiveTypeConst reference="../../../yajco.model.Property/type/primitiveTypeConst"/>
+                            </type>
+                            <patterns/>
+                          </yajco.model.Property>
                         </abstractSyntax>
                         <concreteSyntax>
                           <yajco.model.Notation>
                             <parts>
+                              <yajco.model.PropertyReferencePart>
+                                <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
+                                <patterns>
+                                  <yajco.model.pattern.impl.Token>
+                                    <name>name</name>
+                                  </yajco.model.pattern.impl.Token>
+                                </patterns>
+                              </yajco.model.PropertyReferencePart>
+                              <yajco.model.TokenPart>
+                                <token>=</token>
+                              </yajco.model.TokenPart>
+                              <yajco.model.PropertyReferencePart>
+                                <property reference="../../../../../abstractSyntax/yajco.model.Property[2]"/>
+                                <patterns/>
+                              </yajco.model.PropertyReferencePart>
+                            </parts>
+                            <patterns/>
+                          </yajco.model.Notation>
+                          <yajco.model.Notation>
+                            <parts>
+                              <yajco.model.PropertyReferencePart>
+                                <property reference="../../../../../abstractSyntax/yajco.model.Property[3]"/>
+                                <patterns/>
+                              </yajco.model.PropertyReferencePart>
                               <yajco.model.PropertyReferencePart>
                                 <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
                                 <patterns>
@@ -69,20 +100,10 @@
               <concreteSyntax>
                 <yajco.model.Notation>
                   <parts>
-                    <yajco.model.TokenPart>
-                      <token>{</token>
-                    </yajco.model.TokenPart>
                     <yajco.model.PropertyReferencePart>
                       <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
-                      <patterns>
-                        <yajco.model.pattern.impl.Separator>
-                          <value>,</value>
-                        </yajco.model.pattern.impl.Separator>
-                      </patterns>
+                      <patterns/>
                     </yajco.model.PropertyReferencePart>
-                    <yajco.model.TokenPart>
-                      <token>}</token>
-                    </yajco.model.TokenPart>
                   </parts>
                   <patterns/>
                 </yajco.model.Notation>
@@ -117,15 +138,83 @@
       <patterns/>
     </yajco.model.Concept>
     <yajco.model.Concept>
-      <name>LiteralValue</name>
+      <name>CollectionValue</name>
       <parent reference="../../yajco.model.Concept[5]"/>
       <abstractSyntax/>
       <concreteSyntax/>
       <patterns/>
     </yajco.model.Concept>
     <yajco.model.Concept>
-      <name>NumericLit</name>
+      <name>Tuple</name>
       <parent reference="../../yajco.model.Concept[6]"/>
+      <abstractSyntax>
+        <yajco.model.Property>
+          <name>items</name>
+          <type class="yajco.model.type.ListType">
+            <componentType class="yajco.model.type.ReferenceType">
+              <concept>
+                <name>LiteralValue</name>
+                <parent reference="../../../../../../../yajco.model.Concept[5]"/>
+                <abstractSyntax/>
+                <concreteSyntax/>
+                <patterns/>
+              </concept>
+            </componentType>
+          </type>
+          <patterns/>
+        </yajco.model.Property>
+      </abstractSyntax>
+      <concreteSyntax>
+        <yajco.model.Notation>
+          <parts>
+            <yajco.model.PropertyReferencePart>
+              <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
+              <patterns/>
+            </yajco.model.PropertyReferencePart>
+          </parts>
+          <patterns/>
+        </yajco.model.Notation>
+      </concreteSyntax>
+      <patterns>
+        <yajco.model.pattern.impl.Parentheses>
+          <left>{</left>
+          <right>}</right>
+        </yajco.model.pattern.impl.Parentheses>
+      </patterns>
+    </yajco.model.Concept>
+    <yajco.model.Concept reference="../yajco.model.Concept[7]/abstractSyntax/yajco.model.Property/type/componentType/concept"/>
+    <yajco.model.Concept>
+      <name>Boolean</name>
+      <parent reference="../../yajco.model.Concept[7]/abstractSyntax/yajco.model.Property/type/componentType/concept"/>
+      <abstractSyntax>
+        <yajco.model.Property>
+          <name>value</name>
+          <type class="yajco.model.type.PrimitiveType">
+            <primitiveTypeConst>BOOLEAN</primitiveTypeConst>
+          </type>
+          <patterns/>
+        </yajco.model.Property>
+      </abstractSyntax>
+      <concreteSyntax>
+        <yajco.model.Notation>
+          <parts>
+            <yajco.model.PropertyReferencePart>
+              <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
+              <patterns>
+                <yajco.model.pattern.impl.Token>
+                  <name>bool</name>
+                </yajco.model.pattern.impl.Token>
+              </patterns>
+            </yajco.model.PropertyReferencePart>
+          </parts>
+          <patterns/>
+        </yajco.model.Notation>
+      </concreteSyntax>
+      <patterns/>
+    </yajco.model.Concept>
+    <yajco.model.Concept>
+      <name>NumericLit</name>
+      <parent reference="../../yajco.model.Concept[7]/abstractSyntax/yajco.model.Property/type/componentType/concept"/>
       <abstractSyntax>
         <yajco.model.Property>
           <name>value</name>
@@ -154,7 +243,7 @@
     </yajco.model.Concept>
     <yajco.model.Concept>
       <name>Null</name>
-      <parent reference="../../yajco.model.Concept[6]"/>
+      <parent reference="../../yajco.model.Concept[7]/abstractSyntax/yajco.model.Property/type/componentType/concept"/>
       <abstractSyntax>
         <yajco.model.Property>
           <name>nullValue</name>
@@ -182,51 +271,20 @@
       <patterns/>
     </yajco.model.Concept>
     <yajco.model.Concept>
-      <name>Boolean</name>
-      <parent reference="../../yajco.model.Concept[6]"/>
-      <abstractSyntax>
-        <yajco.model.Property>
-          <name>value</name>
-          <type class="yajco.model.type.PrimitiveType">
-            <primitiveTypeConst>BOOLEAN</primitiveTypeConst>
-          </type>
-          <patterns/>
-        </yajco.model.Property>
-      </abstractSyntax>
-      <concreteSyntax>
-        <yajco.model.Notation>
-          <parts>
-            <yajco.model.PropertyReferencePart>
-              <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
-              <patterns>
-                <yajco.model.pattern.impl.Token>
-                  <name>bool</name>
-                </yajco.model.pattern.impl.Token>
-              </patterns>
-            </yajco.model.PropertyReferencePart>
-          </parts>
-          <patterns/>
-        </yajco.model.Notation>
-      </concreteSyntax>
-      <patterns/>
-    </yajco.model.Concept>
-    <yajco.model.Concept>
-      <name>CollectionValue</name>
+      <name>TestIf</name>
       <parent reference="../../yajco.model.Concept[5]"/>
-      <abstractSyntax/>
-      <concreteSyntax/>
-      <patterns/>
-    </yajco.model.Concept>
-    <yajco.model.Concept>
-      <name>Tupple</name>
-      <parent reference="../../yajco.model.Concept[10]"/>
       <abstractSyntax>
         <yajco.model.Property>
-          <name>items</name>
-          <type class="yajco.model.type.ListType">
-            <componentType class="yajco.model.type.ReferenceType">
-              <concept reference="../../../../../../yajco.model.Concept[6]"/>
-            </componentType>
+          <name>condition</name>
+          <type class="yajco.model.type.ReferenceType">
+            <concept reference="../../../../../yajco.model.Concept[5]"/>
+          </type>
+          <patterns/>
+        </yajco.model.Property>
+        <yajco.model.Property>
+          <name>body</name>
+          <type class="yajco.model.type.ReferenceType">
+            <concept reference="../../../../../yajco.model.Concept[5]"/>
           </type>
           <patterns/>
         </yajco.model.Property>
@@ -234,19 +292,16 @@
       <concreteSyntax>
         <yajco.model.Notation>
           <parts>
-            <yajco.model.TokenPart>
-              <token>[</token>
-            </yajco.model.TokenPart>
             <yajco.model.PropertyReferencePart>
               <property reference="../../../../../abstractSyntax/yajco.model.Property"/>
-              <patterns>
-                <yajco.model.pattern.impl.Separator>
-                  <value>,</value>
-                </yajco.model.pattern.impl.Separator>
-              </patterns>
+              <patterns/>
+            </yajco.model.PropertyReferencePart>
+            <yajco.model.PropertyReferencePart>
+              <property reference="../../../../../abstractSyntax/yajco.model.Property[2]"/>
+              <patterns/>
             </yajco.model.PropertyReferencePart>
             <yajco.model.TokenPart>
-              <token>]</token>
+              <token>pp</token>
             </yajco.model.TokenPart>
           </parts>
           <patterns/>
@@ -271,6 +326,10 @@
     <yajco.model.TokenDef>
       <name>number</name>
       <regexp>[0-9]+</regexp>
+    </yajco.model.TokenDef>
+    <yajco.model.TokenDef>
+      <name>privateAt</name>
+      <regexp>final</regexp>
     </yajco.model.TokenDef>
   </tokens>
   <skips>

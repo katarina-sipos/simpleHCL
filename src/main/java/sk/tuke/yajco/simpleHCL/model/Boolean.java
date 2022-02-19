@@ -3,8 +3,8 @@ package sk.tuke.yajco.simpleHCL.model;
 import yajco.annotation.Exclude;
 import yajco.annotation.Token;
 
-
 public class Boolean extends LiteralValue {
+
     private boolean value;
 
     public Boolean(@Token("bool") boolean value) {

@@ -1,17 +1,15 @@
 package sk.tuke.yajco.simpleHCL.model;
 
-import yajco.annotation.After;
-import yajco.annotation.Before;
-import yajco.annotation.Optional;
-import yajco.annotation.Separator;
+import yajco.annotation.*;
+
 import java.util.List;
 
-
+@Parentheses(left="{", right = "}")
 public class Tuple extends CollectionValue {
 
     private List<LiteralValue> items;
 
-    public Tuple(@Before("[") @After("]") @Separator(",") List<LiteralValue> items) {
+    public Tuple(List<LiteralValue> items) {
         this.items = items;
     }
 
