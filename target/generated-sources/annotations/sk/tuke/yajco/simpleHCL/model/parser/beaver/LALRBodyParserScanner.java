@@ -21,12 +21,13 @@ public class LALRBodyParserScanner extends Scanner {
     private final Lexer lexer;
 
     static {
-        tokens.put((int) Terminals.SYMBOLPP, Pattern.compile("pp"));
+        tokens.put((int) Terminals.SYMBOL_44, Pattern.compile("[,]"));
+        tokens.put((int) Terminals.SYMBOL_93, Pattern.compile("[]]"));
         tokens.put((int) Terminals.SYMBOL_61, Pattern.compile("[=]"));
+        tokens.put((int) Terminals.SYMBOL_91, Pattern.compile("\\["));
 
         tokens.put((int) Terminals.bool, Pattern.compile("(true)|(false)"));
         tokens.put((int) Terminals.null_value, Pattern.compile("null"));
-        tokens.put((int) Terminals.privateAt, Pattern.compile("final"));
         tokens.put((int) Terminals.number, Pattern.compile("[0-9]+"));
         tokens.put((int) Terminals.name, Pattern.compile("[a-z]+[A-Za-z0-9]*"));
 

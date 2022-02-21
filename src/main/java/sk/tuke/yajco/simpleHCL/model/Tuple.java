@@ -4,12 +4,11 @@ import yajco.annotation.*;
 
 import java.util.List;
 
-@Parentheses(left="{", right = "}")
 public class Tuple extends CollectionValue {
 
     private List<LiteralValue> items;
 
-    public Tuple(List<LiteralValue> items) {
+    public Tuple(@Before("[") @After("]") @Separator(",") List<LiteralValue> items) {
         this.items = items;
     }
 
