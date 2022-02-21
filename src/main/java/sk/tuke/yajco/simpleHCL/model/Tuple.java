@@ -6,17 +6,17 @@ import java.util.List;
 
 public class Tuple extends CollectionValue {
 
-    private List<LiteralValue> items;
+    private List<Expression> items;
 
-    public Tuple(@Before("[") @After("]") @Separator(",") List<LiteralValue> items) {
+    public Tuple(@Before("[") @After("]") @Separator(",") List<Expression> items) {
         this.items = items;
     }
 
-    public List<LiteralValue> getItems() {
+    public List<Expression> getItems() {
         return items;
     }
 
-    public void setItems(List<LiteralValue> items) {
+    public void setItems(List<Expression> items) {
         this.items = items;
     }
 }

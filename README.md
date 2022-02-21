@@ -14,5 +14,5 @@ LiteralValue = (NumericLit | Boolean| Null)
 Boolean = ("true" | "false" );
 Null = "null";
 CollectionValue = Tuple
-Tuple = "[" ( (ExprTerm ("," ExprTerm)* ","?)?) "]";
+Tuple = "[" ( (Expression ("," Expression)* ","?)?) "]";
 ```

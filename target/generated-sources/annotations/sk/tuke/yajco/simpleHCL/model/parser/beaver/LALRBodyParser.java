@@ -18,22 +18,22 @@ import java.util.ArrayList;
 public class LALRBodyParser extends Parser {
 	static public class Terminals {
 		static public final short EOF = 0;
-		static public final short null_value = 1;
-		static public final short number = 2;
-		static public final short bool = 3;
-		static public final short name = 4;
-		static public final short SYMBOL_44 = 5;
-		static public final short SYMBOL_91 = 6;
+		static public final short SYMBOL_91 = 1;
+		static public final short null_value = 2;
+		static public final short number = 3;
+		static public final short bool = 4;
+		static public final short name = 5;
+		static public final short SYMBOL_44 = 6;
 		static public final short SYMBOL_93 = 7;
 		static public final short SYMBOL_61 = 8;
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9oLaDbEmb0KHJTM2bHe2srH2S4OVV4l$L$d4UVjwcr9Al51cwoJVQPzqoFfJ8d6cYZLLBb" +
-		"csjD8XORATD3M3nMfL5zpxQXIx0lj$zW8qMlVAzP0qYuE2JvZzTY8w4xf57XiwlLkHkopFM" +
-		"2#sjfeeeBNq6PEMfo70ZxIAPp0SLjRGLJhlyAtXApLHx$qeuwEDzhs#f$lT7tohTu2nzT6#" +
-		"Yt4Ex$xov##zfKlVUCFNhpr8vrdUFA3NnWhkLMFgpOaK43ApLAwANe69NaMu4$9AvYGrrVE" +
-		"OTHX$Wtcm4WL");
+		"U9o5aTbIma0GHUz48eAYIGYeFEY33sgLFlc3$g$xYXjSpmGigP6IgJhfEpszJ7eaNMXFNMs" +
+		"geotrjAqTzLMfr4RYhPFzljQqhinNAZJGheQfzTWlHEHgIsgH6VD$iWjEsdHAlUc#v2uvlG" +
+		"SAokZO#cFZokDzRMfAeyl6nLz9vt06ftFV2Hn6$H#i8yZc#dX5R7T17opeR5KVs#DbTPRq6" +
+		"17zFfF#QBxF$lJK4z$vrZU#zYE#LtYYwhs$$E0tmcgc69ZcZ08wK36tYjCANKEFVPnlYUqt" +
+		"20Bp3xn6u3r#6Nu3Z9D9fm==");
 
 	private final Action[] actions;
 
@@ -47,17 +47,17 @@ public class LALRBodyParser extends Parser {
 					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Null(nullValue), (Object)nullValue));
 				}
 			},
-			new Action() {	// [1] ExprTerm = LiteralValue.val
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_val = _symbols[offset + 1];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue>) _symbol_val.value;
-					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
-				}
-			},
-			new Action() {	// [2] ExprTerm = CollectionValue.val
+			new Action() {	// [1] ExprTerm = CollectionValue.val
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_val = _symbols[offset + 1];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue>) _symbol_val.value;
+					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
+				}
+			},
+			new Action() {	// [2] ExprTerm = LiteralValue.val
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol _symbol_val = _symbols[offset + 1];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue>) _symbol_val.value;
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			},
@@ -103,48 +103,48 @@ public class LALRBodyParser extends Parser {
 					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Attributes(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Attribute>(attributes.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Attribute>(attributes.getWrappedObject())));
 				}
 			},
-			new Action() {	// [9] Tuple = SYMBOL_91 LiteralValueArray2.items SYMBOL_93
+			new Action() {	// [9] Tuple = SYMBOL_91 ExpressionArray2.items SYMBOL_93
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_items = _symbols[offset + 2];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.LiteralValue>> items = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.LiteralValue>>) _symbol_items.value;
-					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Tuple(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.LiteralValue>(items.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.LiteralValue>(items.getWrappedObject())));
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.Expression>> items = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.Expression>>) _symbol_items.value;
+					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Tuple(new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Expression>(items.getWrappedObject())), (Object)new java.util.ArrayList<sk.tuke.yajco.simpleHCL.model.Expression>(items.getWrappedObject())));
 				}
 			},
-			new Action() {	// [10] LiteralValueArray2 = LiteralValueArray2.list SYMBOL_44 LiteralValue.elem
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_list = _symbols[offset + 1];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.LiteralValue>> list = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.LiteralValue>>) _symbol_list.value;
-					final Symbol _symbol_elem = _symbols[offset + 3];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue> elem = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue>) _symbol_elem.value;
-					 list.getWrappedObject().add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list.getWrappedObject());
-				}
-			},
-			new Action() {	// [11] LiteralValueArray2 = 
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					 return (Symbol) new SymbolWrapper(new SymbolListImpl<sk.tuke.yajco.simpleHCL.model.LiteralValue>());
-				}
-			},
-			new Action() {	// [12] LiteralValueArray2 = LiteralValue.elem
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_elem = _symbols[offset + 1];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue> elem = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue>) _symbol_elem.value;
-					 java.util.List<sk.tuke.yajco.simpleHCL.model.LiteralValue> list = null; list = new SymbolListImpl<sk.tuke.yajco.simpleHCL.model.LiteralValue>(); list.add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list);
-				}
-			},
-			new Action() {	// [13] Body = Attributes.attributes
+			new Action() {	// [10] Body = Attributes.attributes
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_attributes = _symbols[offset + 1];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Attributes> attributes = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Attributes>) _symbol_attributes.value;
 					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Body(attributes.getWrappedObject()), (Object)attributes.getWrappedObject()));
 				}
 			},
-			new Action() {	// [14] Attribute = name.name SYMBOL_61 Expression.expression
+			new Action() {	// [11] Attribute = name.name SYMBOL_61 Expression.expression
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_name = _symbols[offset + 1];
 					final java.lang.String name = (java.lang.String) _symbol_name.value;
 					final Symbol _symbol_expression = _symbols[offset + 3];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression> expression = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression>) _symbol_expression.value;
 					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Attribute(name, expression.getWrappedObject()), (Object)name, expression.getWrappedObject()));
+				}
+			},
+			new Action() {	// [12] ExpressionArray2 = ExpressionArray2.list SYMBOL_44 Expression.elem
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol _symbol_list = _symbols[offset + 1];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.Expression>> list = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<java.util.List<sk.tuke.yajco.simpleHCL.model.Expression>>) _symbol_list.value;
+					final Symbol _symbol_elem = _symbols[offset + 3];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression> elem = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression>) _symbol_elem.value;
+					 list.getWrappedObject().add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list.getWrappedObject());
+				}
+			},
+			new Action() {	// [13] ExpressionArray2 = 
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					 return (Symbol) new SymbolWrapper(new SymbolListImpl<sk.tuke.yajco.simpleHCL.model.Expression>());
+				}
+			},
+			new Action() {	// [14] ExpressionArray2 = Expression.elem
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol _symbol_elem = _symbols[offset + 1];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression> elem = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Expression>) _symbol_elem.value;
+					 java.util.List<sk.tuke.yajco.simpleHCL.model.Expression> list = null; list = new SymbolListImpl<sk.tuke.yajco.simpleHCL.model.Expression>(); list.add(elem.getWrappedObject()); return (Symbol) new SymbolWrapper(list);
 				}
 			},
 			new Action() {	// [15] Boolean = bool.value
@@ -161,24 +161,24 @@ public class LALRBodyParser extends Parser {
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			},
-			new Action() {	// [17] LiteralValue = NumericLit.val
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_val = _symbols[offset + 1];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit>) _symbol_val.value;
-					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
-				}
-			},
-			new Action() {	// [18] LiteralValue = Null.val
+			new Action() {	// [17] LiteralValue = Null.val
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_val = _symbols[offset + 1];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Null> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Null>) _symbol_val.value;
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			},
-			new Action() {	// [19] LiteralValue = Boolean.val
+			new Action() {	// [18] LiteralValue = Boolean.val
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_val = _symbols[offset + 1];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean>) _symbol_val.value;
+					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
+				}
+			},
+			new Action() {	// [19] LiteralValue = NumericLit.val
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol _symbol_val = _symbols[offset + 1];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit>) _symbol_val.value;
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			}

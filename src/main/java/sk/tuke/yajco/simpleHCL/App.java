@@ -6,7 +6,7 @@ import sk.tuke.yajco.simpleHCL.model.parser.ParseException;
 
 public class App {
     public static void main( String[] args ) throws ParseException {
-        String input = "final a =8";
+        String input = "a =8";
 
         LALRBodyParser parser = new LALRBodyParser();
         parser.parse(input);
