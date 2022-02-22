@@ -29,11 +29,11 @@ public class LALRBodyParser extends Parser {
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9o5aTbIma0GHUz48eAYIGYeFEY33sgLFlc3$g$xYXjSpmGigP6IgJhfEpszJ7eaNMXFNMs" +
-		"geotrjAqTzLMfr4RYhPFzljQqhinNAZJGheQfzTWlHEHgIsgH6VD$iWjEsdHAlUc#v2uvlG" +
-		"SAokZO#cFZokDzRMfAeyl6nLz9vt06ftFV2Hn6$H#i8yZc#dX5R7T17opeR5KVs#DbTPRq6" +
-		"17zFfF#QBxF$lJK4z$vrZU#zYE#LtYYwhs$$E0tmcgc69ZcZ08wK36tYjCANKEFVPnlYUqt" +
-		"20Bp3xn6u3r#6Nu3Z9D9fm==");
+		"U9oLaSbIma0KHKz7We1Y90ceB7JXGgtIbJ$e$pgFEC7rTf8ggS12k#hatJTrTru3b#mpO8i" +
+		"#6TiCsM72c99UAxhNyW$Oe4kYQmfs6P6thMPwTKNA9j1nP#olUpDNT1qlLg9jF#wN#ZPZ0e" +
+		"bFxApOk5BNzIJl2TEhAkI$WWjpRiwQsAavYlglU1sRfD4dQ$A39Nsuf9F$d2DfjcxFnf#wu" +
+		"gEM#go#B$hIGdFTwLOtkdV$jnxqvCoRUTQZtbrMUeh1qwp9JD$adblkR6vTcg7zED#HRL61" +
+		"2Pv#y5i4lyWlanzaaqcD");
 
 	private final Action[] actions;
 
@@ -47,17 +47,17 @@ public class LALRBodyParser extends Parser {
 					 return (Symbol) new SymbolWrapper(yajco.ReferenceResolver.getInstance().register(new sk.tuke.yajco.simpleHCL.model.Null(nullValue), (Object)nullValue));
 				}
 			},
-			new Action() {	// [1] ExprTerm = CollectionValue.val
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_val = _symbols[offset + 1];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue>) _symbol_val.value;
-					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
-				}
-			},
-			new Action() {	// [2] ExprTerm = LiteralValue.val
+			new Action() {	// [1] ExprTerm = LiteralValue.val
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_val = _symbols[offset + 1];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.LiteralValue>) _symbol_val.value;
+					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
+				}
+			},
+			new Action() {	// [2] ExprTerm = CollectionValue.val
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol _symbol_val = _symbols[offset + 1];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.CollectionValue>) _symbol_val.value;
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			},
@@ -168,17 +168,17 @@ public class LALRBodyParser extends Parser {
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			},
-			new Action() {	// [18] LiteralValue = Boolean.val
-				public Symbol reduce(Symbol[] _symbols, int offset) {
-					final Symbol _symbol_val = _symbols[offset + 1];
-					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean>) _symbol_val.value;
-					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
-				}
-			},
-			new Action() {	// [19] LiteralValue = NumericLit.val
+			new Action() {	// [18] LiteralValue = NumericLit.val
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					final Symbol _symbol_val = _symbols[offset + 1];
 					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.NumericLit>) _symbol_val.value;
+					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
+				}
+			},
+			new Action() {	// [19] LiteralValue = Boolean.val
+				public Symbol reduce(Symbol[] _symbols, int offset) {
+					final Symbol _symbol_val = _symbols[offset + 1];
+					final sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean> val = (sk.tuke.yajco.simpleHCL.model.parser.beaver.SymbolWrapper<sk.tuke.yajco.simpleHCL.model.Boolean>) _symbol_val.value;
 					 return (Symbol) new SymbolWrapper(val.getWrappedObject());
 				}
 			}

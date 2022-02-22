@@ -35,8 +35,8 @@ Null
 	;
 
 ExprTerm
-	= CollectionValue.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
-	| LiteralValue.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
+	= LiteralValue.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
+	| CollectionValue.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	;
 
 NumericLit
@@ -85,7 +85,7 @@ CollectionValue
 
 LiteralValue
 	= Null.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
-	| Boolean.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	| NumericLit.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
+	| Boolean.val	{: return (Symbol) new SymbolWrapper(val.getWrappedObject()); :}
 	;
 
